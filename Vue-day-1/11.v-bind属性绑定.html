@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-bind 进行属性绑定 -->
+        <!-- 也可以直接简写为   ： -->
+        <a :href="url">百度</a>
+        <button @click='change'>lll</button>
+    </div>
+    <script src="vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                url: 'https://www.baidu.com/'
+            },
+            methods: {
+                change: function() {
+                    this.url = 'https://www.jd.com/'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

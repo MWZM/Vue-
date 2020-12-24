@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-text只进行单纯的文本替换，不会解析html标签以及一些运算 -->
+        <div v-text='msg'></div>
+        <!-- v-html会进行html标签的解析，但是存在安全问题，不能用在表单提交中 -->
+        <div v-html='msg1'></div>
+        <!-- v-pre直接会跳过编译的过程，跳过大量没有指令的节点会加快编译。 -->
+        <div v-pre>{{msg}}</div>
+    </div>
+    <script src="vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello',
+                msg1: '<h1>hello</h1>'
+            }
+        })
+    </script>
+</body>
+
+</html>

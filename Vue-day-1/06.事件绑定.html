@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <div>{{msg}}</div>
+        <div>
+            <!-- 注册事件有两种写法： -->
+            <!-- 1.v-on:click -->
+            <!-- 2.@click -->
+            <button v-on:click='msg++'>lll</button>
+            <button v-on:click='dd'>lll</button>
+            <button @click='dd'>lll</button>
+        </div>
+    </div>
+    <script src="./vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '.box',
+            data: {
+                msg: 0,
+            },
+            methods: {
+                dd: function() {
+                    // this就是vm本身
+                    console.log(this === vm); //true
+                    this.msg++
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

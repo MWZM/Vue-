@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 数据绑定就是将html与data中的数据进行关联起来 -->
+        <!-- 数据响应式：当数据发生改变后页面也会进行相应的改变 -->
+        <!-- v-once只进行一次数据替换，之后就失去数据响应式 -->
+        <div>{{msg}}</div>
+        <div v-once>{{info}}</div>
+    </div>
+    <script src="vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello',
+                info: 'Vue'
+            }
+        })
+    </script>
+</body>
+
+</html>

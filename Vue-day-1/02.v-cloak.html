@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    [v-cloak] {
+        display: none;
+    }
+</style>
+<!-- 指令的本质， 就是自定义（ v - 开头） -->
+
+<body>
+    <!-- 出现闪动问题的原因是html自上而下的解析问题导致的 -->
+    <div id="app">
+        <div v-cloak>{{msg}}</div>
+    </div>
+    <script src="vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello'
+            }
+        })
+    </script>
+</body>
+
+</html>

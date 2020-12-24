@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <div>{{msg}}</div>
+        <div @click='dd'>
+            <!-- stop添加在点击事件之后会阻止事件的冒泡 -->
+            <!-- prevent添加在时间之后会阻止事件的默认行为 -->
+            <!-- stop和prevent也可以进行连用 -->
+            <button @click.stop>lll</button>
+            <a href="https://www.baidu.com/" @click.prevent.stop>百度</a>
+        </div>
+    </div>
+    <script src="./vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '.box',
+            data: {
+                msg: 0,
+            },
+            methods: {
+                dd: function() {
+                    // this就是vm本身
+                    console.log(this === vm); //true
+                    this.msg++
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

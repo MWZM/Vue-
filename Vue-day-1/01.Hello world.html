@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <div>{{msg}}</div>
+        <!-- 插值表达式内部还可以进行简单的计算 -->
+    </div>
+    <script src="./vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '.box', //挂载元素位置
+            data: { //模型数据（这是一个对象）
+                msg: 'Hello World'
+            }
+        })
+    </script>
+</body>
+
+</html>
