@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+
+<body>
+    <div id="app">
+        <!-- 进行行内样式绑定既可以用数组也可以用对象，一般都会将其抽离出来在data中进行数值的替换，便于代码的阅读 -->
+        <div :style="[a,b]">
+
+        </div>
+    </div>
+    <script src="vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                a: {
+                    width: '100px',
+                    height: '100px'
+                },
+                b: {
+                    backgroundColor: 'skyblue'
+                }
+            },
+
+        })
+    </script>
+</body>
+
+</html>
