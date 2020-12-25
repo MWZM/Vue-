@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .aaaa {
+        width: 100px;
+        height: 100px;
+        background-color: skyblue;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <div :class="{aaaa:isaaaa}">
+
+        </div>
+        <button @click='handle'>lll</button>
+    </div>
+    <script src="vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                isaaaa: true
+            },
+            methods: {
+                handle: function() {
+                    this.isaaaa = !this.isaaaa
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
