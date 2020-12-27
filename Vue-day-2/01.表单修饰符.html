@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- .number可以将其转换为数字 -->
+        <input type="text" v-model.number='msg'>
+        <!-- .trim可以去除两边的空格 -->
+        <input type="text" v-model.trim='msg1'>
+        <!-- .lazy可以将input事件转换为change事件，change事件将变为失去焦点事件 -->
+        <input type="text" v-model.lazy='msg2'>
+        <div>{{msg2}}</div>
+    </div>
+    <script src="vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '',
+                msg1: '',
+                msg2: ''
+            }
+        })
+    </script>
+</body>
+
+</html>

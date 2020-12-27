@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-focus>
+        <!-- v-focus中的focus必须和下面定义的函数的形参相等 -->
+    </div>
+    <script src="vue.min.js"></script>
+    <script>
+        Vue.directive('focus', { //focus是自定义的形参
+            //操作Dom时在inserted中进行使用
+            inserted: function(el) {
+                //el表示所绑定的元素
+                el.focus()
+            }
+        })
+        var vm = new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+
+</html>

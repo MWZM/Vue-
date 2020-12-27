@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>{{msg}}</div>
+        <div>{{reverses}}</div>
+    </div>
+    <script src="vue.min.js"></script>
+    <script>
+        //计算属性相当一是把插值表示式中中写的东西抽离城一个方法，在进行调用，提高代码的可阅读性
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'red'
+            },
+            computed: {
+                reverses: function() {
+                    return this.msg.split('').reverse().join('')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
