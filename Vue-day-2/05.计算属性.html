@@ -10,22 +10,27 @@
 <body>
     <div id="app">
         <div>{{msg}}</div>
+        <div>{{msg.split('').reverse().join('')}}</div>
         <div>{{reverses}}</div>
     </div>
     <script src="vue.min.js"></script>
     <script>
         //计算属性相当一是把插值表示式中中写的东西抽离城一个方法，在进行调用，提高代码的可阅读性
+        //计算属性必须要有return
         var vm = new Vue({
-            el: '#app',
-            data: {
-                msg: 'red'
-            },
-            computed: {
-                reverses: function() {
-                    return this.msg.split('').reverse().join('')
+                el: '#app',
+                data: {
+                    msg: 'red'
+                },
+                computed: {
+                    reverses: function() {
+                        return this.msg.split('').reverse().join('')
+                    }
                 }
-            }
-        })
+            })
+            //计算属性与方法的不同：
+            // 计算属性存在缓存：如果msg不进行改变，再次执行时会调用之前的
+            // 方法不存在缓存：每次执行都会再次进行计算，方法是写在methods中
     </script>
 </body>
 

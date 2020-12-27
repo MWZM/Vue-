@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>{{msg}}</div>
+    </div>
+    <script src="vue.min.js"></script>
+    <script>
+        //侦听器的应用场景：用于异步或者开销比较大的操作
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'red'
+            },
+            computed: {
+
+            },
+            watch: {
+                //侦听器还可以进行传参  可以打印出之前的数据以及改变之后的数据
+                msg: function() {
+                    console.log(233);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
