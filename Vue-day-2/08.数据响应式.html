@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li :key='index' v-for='(item,index) in list' v-text='item'></li>
+        </ul>
+        <button @click='handle'>lll</button>
+    </div>
+    <script src="vue.min.js"></script>
+    <script>
+        //修改数据响应式
+        // 1. Vue.set(vm.list,'修改的哪一个索引'，'替换的值')
+        // 1. vm.$set(vm.list,'修改的哪一个'，'替换的值')
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                list: [222, 333, 444]
+            },
+            methods: {
+                handle: function() {
+                    this.$set(this.list, 1, 'orange')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

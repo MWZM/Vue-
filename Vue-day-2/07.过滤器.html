@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model='msg'>
+        <div>{{msg | abc}}</div>
+    </div>
+    <script src="vue.min.js"></script>
+    <script>
+        //过滤器：
+        //  1. 可以与插值表达式和属性绑定
+        //  2. 支持内联操作
+        //  3. 可以链接多个
+        //  4. 需要用 | 进行链接
+        //  5. 不会改变原始的数据
+        Vue.filter('abc', function(val) { //abc是需要插入在模板中的属性
+            //val是形参，是模板中的数据
+            return val + 'mmmm'
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'red'
+            },
+            computed: {
+
+            },
+
+        })
+    </script>
+</body>
+
+</html>
