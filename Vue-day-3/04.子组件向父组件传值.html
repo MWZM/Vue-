@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>{{msg}}</div>
+        <son :aaa='msg' @mm='handle'></son>
+    </div>
+    <script src="vue.min.js"></script>
+    <script>
+        //在进行子组件向父组件进行传值时，
+        // 1. 必须先定义自定义事件
+        // 2. 自定义事件后面的事件函数需要在子组件的methods和父组件的methods进行定义
+        // 3. 在子组件中定意事件时必须有 $emit() 属性，并且第一个参数必须是自定义事件，第二个为要传递的值
+        // 4. 在父组件的事件中，函数中必须添加一个形参去接收 $emit 中传递过来的值
+        Vue.component('son', {
+            //父组件向子组件进行传值必须有props属性
+            props: ['aaa'],
+            data: function() {
+                return {
+                    num: 100
+                }
+            },
+            template: `<div>
+                <div>{{aaa}}</div>
+                <button @click='handle'>点击了son按钮</button>
+                </div>`,
+            methods: {
+                handle: function() {
+                    //$emit()第一个参数是触发自定义事件，第二个参数是改变的值
+                    //改变的值由父组件中的事件函数进行接收
+                    this.$emit('mm', 999)
+                }
+            }
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 25
+            },
+            methods: {
+                //这里的val是$emit传递的第二个参数
+                handle: function(val) {
+                    this.msg = val
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
