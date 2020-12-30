@@ -111,30 +111,53 @@
         var mycenter = {
             props: ['list'],
             template: `<div>
-                    <div class="item" :key='item.id' v-for='item in list'>
-                        <img src="img/a.jpg" />
-                        <div class="name">{{item.name}}</div>
-                        <div class="change">
-                            <a href="">－</a>
-                            <input type="text" class="num" />
-                            <a href="">＋</a>
-                        </div>
-                        <div class="del" @click='handle(item)'>×</div>
-                    </div>
-                   
-                </div>`,
+                            <div class="item" :key='item.id' v-for='item in list'>
+                                <img src="img/a.jpg" />
+                                <div class="name">{{item.name}}</div>
+                                <div class="change">
+                                    <a href="" @click.prevent='sub(item)'>－</a>
+                                    <input type="text" class="num" :value='item.num' @blur='change(item,$event)' />
+                                    <a href="" @click.prevent='add(item)'>＋</a>
+                                </div>
+                                <div class="del" @click='handle(item)'>×</div>
+                            </div>
+                        
+                        </div>`,
             methods: {
+
                 handle: function(item) {
                     this.$emit('del', item.id)
+                },
+                change: function(item, event) {
+                    // console.log(123);
+                    // console.log(event.target.value, item.id);
+                    this.$emit('changenum', {
+                        id: item.id,
+                        num: event.target.value,
+                        type: 'change'
+                    })
+                },
+                sub: function(val) {
+                    this.$emit('changenum', {
+                        id: val.id,
+                        type: 'sub'
+                    })
+                },
+                add: function(val) {
+                    // console.log(val.id);
+                    this.$emit('changenum', {
+                        id: val.id,
+                        type: 'add'
+                    })
                 }
             }
         }
         var mymount = {
             props: ['list'],
             template: ` <div class="total">
-                    <span>总价：{{mount}}</span>
-                    <button>结算</button>
-                </div>`,
+                            <span>总价：{{mount}}</span>
+                            <button>结算</button>
+                        </div>`,
             computed: {
                 mount: function() {
                     var nums = 0
@@ -187,7 +210,7 @@
           <div class="container">
             <div class="cart">
               <mycart-top></mycart-top>
-              <mycart-center :list='list'  @del='handle'></mycart-center>
+              <mycart-center :list='list'  @del='handle' @changenum='changenum'></mycart-center>
               <mycart-mount :list='list'></mycart-mount>
             </div>
           </div>
@@ -200,8 +223,45 @@
             },
             methods: {
                 handle: function(val) {
-                    console.log(val);
-                    this.list.splice(val - 1, 1)
+                    // console.log(val);
+                    var index = this.list.findIndex(item => {
+                            return val == item.id
+                        })
+                        // console.log(index);
+                    this.list.splice(index, 1)
+
+                },
+
+                changenum: function(val) {
+                    // console.log(val);
+                    if (val.type == 'change') {
+                        this.list.some(item => {
+                            if (item.id == val.id) {
+                                item.num = val.num
+                                return true
+                            }
+                        })
+                    } else if (val.type == 'add') {
+                        this.list.some(item => {
+                            if (item.id == val.id) {
+                                item.num += 1
+
+
+                                return true
+                            }
+                        })
+                    } else if (val.type == 'sub') {
+                        this.list.some(item => {
+                            if (item.id == val.id) {
+                                if (item.num == 0) {
+                                    return
+                                }
+                                item.num -= 1
+                                return true
+                            }
+
+                        })
+                    }
                 }
             }
         })
