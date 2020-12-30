@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <son>
+            <div>123</div>
+            <template slot='footer'>
+                <div>456</div>
+            </template>
+        </son>
+    </div>
+    <script src="vue.min.js"></script>
+    <script>
+        //组件插槽 ：父组件给子组件进行传值
+        Vue.component('son', {
+            data: function() {
+                return {
+
+                }
+            },
+            //slot 相当于一个占位符
+            template: `<div>
+            <strong><slot name='footer'></slot></strong>
+                <slot></slot>
+            </div>`
+        })
+        var vm = new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+
+</html>
