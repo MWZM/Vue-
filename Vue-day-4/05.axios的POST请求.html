@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="axios.js"></script>
+    <script>
+        //post请求和put请求路径上的第二个参数就是要拼接的路径，只不过是写成了对象的形式
+        axios.post('http://192.168.30.63:3000/axios', {
+            uname: 'zhangsan',
+            pwd: '18'
+        }).then(ret => {
+            console.log(ret.data);
+        })
+        axios.put('http://192.168.30.63:3000/axios/123', {
+            uname: 'zhangsan',
+            pwd: '18'
+        }).then(ret => {
+            console.log(ret.data);
+        })
+    </script>
+</body>
+
+</html>
