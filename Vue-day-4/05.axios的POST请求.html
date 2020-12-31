@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="axios.js"></script>
+    <script>
+        axios.post('http://192.168.30.63:3000/axios', {
+            uname: 'zhangsan',
+            pwd: '18'
+        }).then(ret => {
+            console.log(ret.data);
+        })
+        axios.put('http://192.168.30.63:3000/axios/123', {
+            uname: 'zhangsan',
+            pwd: '18'
+        }).then(ret => {
+            console.log(ret.data);
+        })
+    </script>
+</body>
+
+</html>
