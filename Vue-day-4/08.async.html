@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="axios.js"></script>
+    <script>
+        //第一步的这个是全局进行设置  URL地址，后面不需要再进行时设置
+
+        //async 和 await 是Es7 的语法，优化了 Promise
+        axios.defaults.baseURL = 'http://192.168.30.89:3000'
+        async function A() {
+            var ret = await axios.get('/data')
+            console.log(ret.data);
+        }
+        A()
+    </script>
+</body>
+
+</html>
