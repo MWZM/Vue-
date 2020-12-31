@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="axios.js"></script>
+    <script>
+        //请求拦截器主要是进行一些配置
+        axios.interceptors.request.use(config => {
+                return config
+            })
+            //响应拦截器主要是处理数据
+        axios.interceptors.response.use(res => {
+            return res.data
+        })
+        axios.get('http://192.168.30.63:3000/adata').then(ret => {
+            console.log(ret);
+        })
+    </script>
+</body>
+
+</html>
