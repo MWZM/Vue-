@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <router-link to='/reg'>Reg</router-link>
+        <router-link to='/user'>User</router-link>
+        <router-view></router-view>
+    </div>
+    <script src="vue.min.js"></script>
+    <script src="vue-router.js"></script>
+    <script>
+        var Reg = {
+            template: `<h1>reg 组件</h1>`
+        }
+        var User = {
+            template: `<div>
+                <h1>user 组件</h1>
+                <hr/>
+               <router-link to='/reg/tab1'>tab1</router-link>
+               <router-link  to='/reg/tab2'>tab2</router-link>
+                <router-view></router-view>
+                </div>`
+        }
+        var Tab1 = {
+            template: `<h3>tab1</h3>`
+        }
+        var Tab2 = {
+            template: `<h3>tab2</h3>`
+        }
+        var router = new VueRouter({
+            routes: [{
+                path: '/reg',
+                component: Reg
+            }, {
+                path: '/user',
+                component: User,
+                children: [{
+                    path: '/reg/tab1',
+                    component: Tab1
+                }, {
+                    path: '/reg/tab2',
+                    component: Tab2
+                }]
+            }]
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            router: router
+        })
+    </script>
+</body>
+
+</html>
